@@ -1,0 +1,38 @@
+import math
+
+def computeFreqs(text, k_mer):
+
+	sizeArr = int(math.pow(4,k_mer)) 
+	array = [None] * sizeArr
+	for i in range(sizeArr):
+		array[i] = 0
+
+	end = len(text) - k_mer
+	for i in range(end + 1):
+		pattern = text[i:i+k_mer]
+		numberOfPattern = patternToNumber(pattern)
+		array[numberOfPattern] = array[numberOfPattern] + 1
+
+	print(" ".join(str(x) for x in array))
+
+def patternToNumber(pat):
+
+	if len(pat) == 0:
+		return 0
+	symbol = pat[len(pat) - 1] 
+	prefix = pat[0:len(pat) - 1]
+
+	return 4*patternToNumber(prefix) + symbolToNumber(symbol)
+
+def symbolToNumber(letter):
+
+	if letter == 'A':
+		return 0
+	elif letter == 'C':
+		return 1
+	elif letter == 'G':
+		return 2
+	elif letter == 'T':
+		return 3
+
+computeFreqs('TACTATCTCGTGATTAGTACAGCCGAACCAACACATGATCCACATTTTCAGGAGGAACGTTACCATGCGCTTCCCCTTAAGTTAATCAGAGTACAAAAGCTCCTGGACAGCTGCGGATGGCTGCACATGTTGTCGAACTTCATATTCTCGATACTAGTCACGCTCCCGTAAGAAGTGCTGATCCGAAATTTGGCTATATTACAGCAGCTGGCTGAAGTGAGTCTGTCTGGAATGGGTCAAGAGGGCTATCGTCCAGTCGCAAAGTTGATCGCTCCGTTAGCTAATTAACTACTGCCCGTCATTGGTGCTCACGGATTACTGAGTCTTGACTGTTCGGCTGATTTGGCCATCTTGGGTGACCCGAGACAATTGATCCCCGTACTAAGTAGATACTCACACAAACGGGTGGTTGTAATGTGGCCGTCTCCCTCGTGGCACGACGGCACTCAGCCCGCAGCGTCCAAAGGAGGACGTAGATCATGTACTTGTTACGTTATGACTGACGTATGGTATCCAGAGCATCTCCGTCCTCGAGGCACTCTTGAAGTAAGTCAGAAAGCCCTCGGTTGTAAACGGGTTTCACGAACGGACCAGATTGAGCCCCTTCGGAGTATCTAGCCGGATCATTGAGTCGCCGGGCCGCCCGCAAGCACGTAGAAGCCGTC', 6)
