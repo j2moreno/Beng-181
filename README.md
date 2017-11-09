@@ -3,8 +3,8 @@ Bioinformatics Algorithms
 
 Use of python programming in order to execute key bioinformatics algorithms 
 
-This is the Rosalind page for the CSE 181 course offered at UCSD in Winter 2017.
-http://rosalind.info/about/
+Problems based of the book written by Pavel Penzner and Phillip Compeau 
+http://bioinformaticsalgorithms.com/index.htm
 
 1	Compute the Number of Times a Pattern Appears in a Text	
 
